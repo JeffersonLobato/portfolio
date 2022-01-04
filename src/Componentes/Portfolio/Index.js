@@ -12,8 +12,9 @@ export default function Portfolio(){
     const [slide, setSlide] = useState(1)
     const [imagem, setImagem] = useState()
     const [titulo, setTitulo] = useState()
-    const [texto, setTexto] = useState()
-    const [link, setLink] = useState()
+    const [descricao, setDescricao] = useState()
+    const [url, setUrl] = useState()
+    const [project, setProjeto] = useState([])
     
     //Quantidade de projetos
     const lenObeject = Projetos.length
@@ -26,28 +27,10 @@ export default function Portfolio(){
         if(slide === 1){
             setSlide(lenObeject)
             
-            let container = document.getElementById('container-portfolio')
-            container.animate([
-                // keyframes
-                { opacity: '0' },
-                { opacity: '1' }
-              ], {
-                // timing options
-                duration: 2000
-              });
         }
         else{
             setSlide(slide-1)
 
-            let container = document.getElementById('container-portfolio')
-            container.animate([
-                // keyframes
-                { opacity: '0' },
-                { opacity: '1' }
-              ], {
-                // timing options
-                duration: 2000
-              });
         }
     }
 
@@ -55,29 +38,9 @@ export default function Portfolio(){
     const nextProject = () =>{
         if(slide === lenObeject){
             setSlide(1)
-
-            let container = document.getElementById('container-portfolio')
-            container.animate([
-                // keyframes
-                { opacity: '0' },
-                { opacity: '1' }
-              ], {
-                // timing options
-                duration: 2000
-              });
         }
         else{
             setSlide(slide+1)
-
-            let container = document.getElementById('container-portfolio')
-            container.animate([
-                // keyframes
-                { opacity: '0' },
-                { opacity: '1' }
-              ], {
-                // timing options
-                duration: 2000
-              });
         }
     }
 
@@ -94,10 +57,10 @@ export default function Portfolio(){
         Projetos.map((projeto, i)=>{
             let ind = i+1
             if(slide === ind){
+
                 setImagem(projeto.imagem)
-                setTitulo(projeto.titulo)
-                setTexto(projeto.descricao)
-                setLink(projeto.url)
+                setProjeto(projeto)
+                
             }
 
             
@@ -118,6 +81,24 @@ export default function Portfolio(){
 
     },[slide])
 
+    const updateContent = () =>{
+       
+        setTitulo(project.titulo)
+        setDescricao(project.descricao)
+        setUrl(project.url)
+
+        let container = document.getElementById('container-portfolio')
+                container.animate([
+                    // keyframes
+                    { opacity: '0' },
+                    { opacity: '1' }
+                ], {
+                    // timing options
+                    duration: 2000
+                })
+
+         }
+
     return(
         <section id='portfolio' className='section-portfolio'>
             <div className='portfolio'>
@@ -127,15 +108,15 @@ export default function Portfolio(){
                 <div id='container-portfolio' className='container-portfolio'>
                     <div className='div-project'>
                         <div className='block-image-project'>
-                            <img className='image-project' src={imagem}  alt='Imagem de projeto para portfólio de Jefferson Lobato'/>
+                            <img className='image-project' src={imagem}  onLoad={()=>updateContent()} alt='Imagem de projeto para portfólio de Jefferson Lobato'/>
                         </div>
                         <div className='block-text-project'>
                             <h3>{titulo}</h3>
-                            <p>{texto}</p>
+                            <p>{descricao}</p>
                         </div>
                     </div>
                     <div className='button-saiba-mais'>
-                        <a href={link} target='_blank'><button className='saiba-mais-project'>Saiba mais</button></a>
+                        <a href={url} target='_blank'><button className='saiba-mais-project'>Saiba mais</button></a>
                     </div>
                 </div>
 
