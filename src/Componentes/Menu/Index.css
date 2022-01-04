@@ -1,0 +1,159 @@
+.menu-responsivo{
+    display: none;
+}
+
+.menu{
+    width: 100%;
+    height: 80px;
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    color: #AD9009;
+}
+
+
+.menu-container{
+    width: 100%;
+    height: 80px;
+    background-color: rgba(2, 20, 19, 0.3);
+    animation-name: menu;
+    animation-duration: 4.5s;
+    opacity: 1;
+}
+
+@keyframes menu {
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+
+.list-menu{
+    padding-top: 30px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.list-menu-li{
+    cursor: pointer;
+    display: inline;
+    margin-left: 25px;
+    font-size: 30px;
+    transition: font-size 1s, color 1s;
+}
+
+.list-menu-li:hover{
+    font-size: 33px;
+    color: #00FAED;
+}
+
+.active{
+    font-size: 33px !important;
+    color: #00FAED !important;
+}
+
+@media screen and (max-width: 1100px){
+    .menu-container{
+        display: none;
+    }
+
+    .menu-responsivo{
+        display: block;
+        width: 100%; 
+        margin-top: 15px;
+    }
+
+    .menu-hamburguer{
+        cursor: pointer;
+        width: 80px;
+        margin-top: 50px;
+        margin-left: 85%;
+    }
+
+    .menu-fechar{
+        display: none;
+        cursor: pointer;
+        width: 80px;
+        margin-left: 85%;
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+
+    .list-menu-responsivo{
+        display: none;
+        position: absolute;
+        left: 70%;
+        width: 200px;
+    }
+
+
+    .list-menu-li-responsivo{
+        cursor: pointer;
+        display: block;
+        height: 80px;
+        border: 1px solid #00FAED;
+        border-top: 0;
+        padding: 25px;
+        font-size: 20px;
+        background-color: #021413;
+        color: #00FAED;
+        transition: background-color 1s, font-size 1s;
+        
+    }
+
+    .list-menu-li-responsivo:first-child{
+        border-top: 1px solid #00FAED !important;
+      }
+
+    .list-menu-li-responsivo:hover{
+        background-color: #083a37;
+        font-size: 25px;
+    }
+
+    .active-responsivo{
+        background-color: #083a37;
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 400px){
+
+    .menu-container{
+        display: none;
+    }
+
+    .menu-responsivo{
+        display: block;
+        width: 100%; 
+        margin-top: 30px;
+    }
+
+    .menu-hamburguer{
+        width: 45px;
+        margin-left: 80%;
+        margin-top: 10px;
+    }
+
+    .menu-fechar{
+        width: 45px;
+        margin-left: 80%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .list-menu-responsivo{
+        position: absolute;
+        left: 60%;
+        width: 150px;
+        
+    }
+
+    .list-menu-li-responsivo{
+        
+        font-size: 15px;
+        
+    }
+
+    .list-menu-li-responsivo:hover{
+        font-size: 20px;
+    }
+
+}
